@@ -1,0 +1,60 @@
+#table-div 
+{
+	width: 80%;
+	border: 2px solid;
+	  display: block;
+  height: 185px;
+overflow:auto;
+}
+
+
+
+#tableBody
+{
+	height:100px;
+}
+
+tr td
+{
+	text-align: center;
+	width:2%;
+
+}
+
+.selected{
+    background: green;
+}
+
+.unselected
+{
+background : white;
+
+}
+
+
+#search-button
+{
+ width:23px;
+}
+#search-span
+{
+display: inline-flex;
+flex-direction: row;
+align-items: center;
+}
+
+#add-span
+{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+#crud-span
+{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
