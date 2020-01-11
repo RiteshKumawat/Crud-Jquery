@@ -1,46 +1,57 @@
-#table-div 
+body
 {
-	width: 80%;
-	border: 2px solid;
-	  display: block;
-  height: 185px;
-overflow:auto;
+    margin: 0 auto;
 }
 
 
+#table-div 
+{
+    width: 1000px;
+    border: 1px solid;
+    display: block;
+    height: 185px;
+    overflow: auto;
+    table-layout: fixed;
+}
 
-#tableBody
+.main-table
+{
+
+}
+
+
+.main-table th
+{
+    width: 100px;
+    color:red;
+}
+
+.main-table tbody
 {
 	height:100px;
 }
 
-tr td
+
+.selected
 {
-	text-align: center;
-	width:2%;
-
-}
-
-.selected{
     background: green;
 }
 
 .unselected
 {
-background : white;
-
+    background : white;
 }
 
 
 #search-button
 {
- width:23px;
+   width:23px;
 }
 #search-span
 {
-display: inline-flex;
-flex-direction: row;
-align-items: center;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #add-span
@@ -55,6 +66,3 @@ align-items: center;
     flex-direction: row;
     align-items: center;
 }
-
-
-

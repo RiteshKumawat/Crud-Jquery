@@ -1,84 +1,80 @@
 <!doctype html>
 <html lang='en'>
 <head><title>Hello World Application</title>
-  <meta charset='utf-8' />
-  <script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
-  <script type='text/javascript' src='js/index.js'></script>
-  <link rel="stylesheet" type="text/css" href="normalize.css"/>
-  
-  <link rel="stylesheet" type="text/css" href="styles.css"/>
-  
+	<meta charset='utf-8' />
+	<script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
+	<script type='text/javascript' src='js/index.js'></script>
+	<link rel="stylesheet" type="text/css" href="normalize.css"/>
+
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+
 </head>
-<center>
-  <body>
+<body>
 
-    <div>
-
-
-      <h1>This is Crud Example with JQuery</h1>
-      <br/>
-      <br/>
-      <br/>
+	<div>
 
 
-<span id='search-span' > 
-<label>Search</label> &nbsp;&nbsp;&nbsp;<input type="text" id='search-name' placeholder="Enter  the task to Search"  />
-&nbsp;&nbsp;&nbsp;<img id= 'search-button' src='icons/search-icon.png'/>
-&nbsp;&nbsp;      
-<img id='add-button' src='icons/add-icon.png'  />
-</span>
+		<h1>This is Crud Example with JQuery</h1>
+		<br/>
+		<br/>
+		<br/>
 
+
+		<span id='search-span' > 
+			<label>Search</label> &nbsp;&nbsp;&nbsp;<input type="text" id='search-name' placeholder="Enter  the task to Search"  />
+			&nbsp;&nbsp;&nbsp;<img id= 'search-button' src='icons/search-icon.png'/>
+			&nbsp;&nbsp;      
+			<img id='add-button' src='icons/add-icon.png'  />
+		</span>
 
 
 
 
- <span id="crud-span" >
-<label>Task </label> &nbsp;&nbsp;&nbsp;     <input type="text"  id='task-name' placeholder="Enter  the task"  />
-&nbsp;&nbsp;      
-<img id='save-button-icon' src='icons/save-icon.png'/>
-<img id='edit-button-icon' src='icons/save-icon.png'/>
 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <label>Priority</label>&nbsp;
-       <select id="priority">
-         <option value="-1">Select</option>
-         <option value="Low">Low</option>
-         <option value="Medium">Medium</option>
-         <option value="High">High</option>
+		<span id="crud-span" >
+			<label>Task </label> &nbsp;&nbsp;&nbsp;     <input type="text"  id='task-name' placeholder="Enter  the task"  />
+			&nbsp;&nbsp;      
+			<img id='save-button-icon' src='icons/save-icon.png'/>
+			<img id='edit-button-icon' src='icons/save-icon.png'/>
 
-       </select> 
-	&nbsp;&nbsp;&nbsp;&nbsp;
-	<button id='cancel-button'>Cancel</button>
-      </span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Priority</label>&nbsp;
+			<select id="priority">
+				<option value="-1">Select</option>
+				<option value="Low">Low</option>
+				<option value="Medium">Medium</option>
+				<option value="High">High</option>
 
-
-
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-<div id='table-div'>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody id = 'tableBody'>
-         
-          
-        </tbody>
-      </table>
-</div>
-    </div>
-  </body>
-</center>
+			</select> 
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id='cancel-button'>Cancel</button>
+		</span>
 
 
+
+
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div id='table-div'>
+			<table class='main-table' border="1">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Task</th>
+						<th>Priority</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody id = 'tableBody'>
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
 </html>
 
