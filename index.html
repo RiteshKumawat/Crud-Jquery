@@ -4,7 +4,11 @@
 	<meta charset='utf-8' />
 	<script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
 	<script type='text/javascript' src='js/index.js'></script>
+	<link rel="stylesheet" type="text/css" href="fontawesome/css/all.css"/>
 	<link rel="stylesheet" type="text/css" href="normalize.css"/>
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<script src="js/jquery-ui.js"></script>
+
 
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
 
@@ -21,10 +25,16 @@
 
 
 		<span id='search-span' > 
-			<label>Search</label> &nbsp;&nbsp;&nbsp;<input type="text" id='search-name' placeholder="Enter  the task to Search"  />
-			&nbsp;&nbsp;&nbsp;<img id= 'search-button' src='icons/search-icon.png'/>
+			<label>Search</label> &nbsp;&nbsp;&nbsp;
+			<input type="text" id='search-name' placeholder="Enter  the task to Search"  />
+			&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;      
-			<img id='add-button' src='icons/add-icon.png'  />
+			<i id='add-button' class="far fa-plus-square"></i>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</span>
 
 
@@ -34,8 +44,9 @@
 		<span id="crud-span" >
 			<label>Task </label> &nbsp;&nbsp;&nbsp;     <input type="text"  id='task-name' placeholder="Enter  the task"  />
 			&nbsp;&nbsp;      
-			<img id='save-button-icon' src='icons/save-icon.png'/>
-			<img id='edit-button-icon' src='icons/save-icon.png'/>
+			<i  id ='save-button-icon' class="far fa-save"></i>
+			<i  id ='edit-button-icon' class="far fa-save"></i>
+			
 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label>Priority</label>&nbsp;
@@ -47,25 +58,25 @@
 
 			</select> 
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<button id='cancel-button'>Cancel</button>
+
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</span>
 
 
 
 
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 		<div id='table-div'>
 			<table class='main-table' border="1">
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Task</th>
-						<th>Priority</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						<th class="main-table-id-column">Id</th>
+						<th class="main-table-data-column">Task</th>
+						<th class="main-table-priority-column">Priority</th>
+						<th class="main-table-action-column">Edit</th>
+						<th class="main-table-action-column">Delete</th>
 					</tr>
 				</thead>
 				<tbody id = 'tableBody'>

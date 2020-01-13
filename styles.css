@@ -1,29 +1,37 @@
 body
 {
-    margin: 0 auto;
+    width: 512px;
+   margin: 0 auto;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
 #table-div 
 {
-    width: 1000px;
+    width: 512px;
     border: 1px solid;
     display: block;
     height: 185px;
+    text-align: center;
     overflow: auto;
     table-layout: fixed;
 }
-
-.main-table
+#tableBody tr
 {
-
+    height: 50px;
 }
 
 
+#tableBody tr:hover
+{
+    background-color:grey;
+    cursor: pointer;
+}
+
 .main-table th
 {
-    width: 100px;
-    color:red;
+background-color: #222831;
+color: white;   
 }
 
 .main-table tbody
@@ -32,9 +40,42 @@ body
 }
 
 
+
+.main-table-data-column
+{
+    width: 312px
+}
+
+.main-table-id-column
+{
+    width:50px
+}
+
+.main-table-priority-column
+{
+
+
+    width: 100px
+}
+
+.main-table-action-column
+{
+    width: 50px; 
+
+}
+
+
+
+i:hover
+{
+    cursor: pointer;
+    color: red;
+
+}
+
 .selected
 {
-    background: green;
+    background-color: #00adb5;
 }
 
 .unselected
@@ -45,7 +86,7 @@ body
 
 #search-button
 {
-   width:23px;
+ width:23px;
 }
 #search-span
 {
@@ -65,4 +106,9 @@ body
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+}
+
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
 }

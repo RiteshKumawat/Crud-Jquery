@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table design</title>
+    <style>
+body {
+    width: 1024px;
+    margin: 0 auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-text {
+    text-align: center;
+    color: #555555;
+}
+
+.main-table {
+    width: 800px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 auto;
+    color: gray;
+}
+
+.main-table th {
+    text-align: left;
+    color: #0084ff;
+}
+
+.main-table tr {
+    border: 1px solid #00000080;
+}
+
+.main-table thead tr {
+    height: 30px;
+}
+
+.main-table tbody tr:hover {
+    cursor: pointer;
+    color:white;
+    background-color:#555555
+}
+
+.main-table-id-column {
+    width: 70px;
+}
+
+.main-table-action-column {
+    width: 150px;
+}
+    </style>
+</head>
+
+<body>
+    <h1 class='main-text'>This is just an example</h1>
+    <div class="table-wrapper">
+        <table class='main-table'>
+            <thead>
+                <tr>
+                    <th class='main-table-id-column'>Id</th>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    <th class="main-table-action-column">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10001</td>
+                    <td>This is a task</td>
+                    <td>Medium</td>
+                    <td>
+                        <button>Edit</button>
+                        &nbsp;
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10002</td>
+                    <td>This is another task</td>
+                    <td>Medium</td>
+                    <td>
+                        <button>Edit</button>
+                        &nbsp;
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10003</td>
+                    <td>This is a third task</td>
+                    <td>Medium</td>
+                    <td>
+                        <button>Edit</button>
+                        &nbsp;
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10004</td>
+                    <td>Fourth task is this one.</td>
+                    <td>Medium</td>
+                    <td>
+                        <button>Edit</button>
+                        &nbsp;
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
