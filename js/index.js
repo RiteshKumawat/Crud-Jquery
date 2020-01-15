@@ -5,31 +5,38 @@ let currentTaskName;
 let curentPriority;
 
 $(document).ready(function(){
-	alert("Jquery is ready");
 	init();
 });
 function init()
 {
 	$('#add-button').bind('click',showAddMode);
-	$('#save-button-icon').bind('click',addTodo);	
+	//$('#save-button-icon').bind('click',addTodo);	
 	$('#edit-button-icon').bind('click',updateTodo);	
 	$('#cancel-button').bind('click',clearUI);
-	$('#crud-span').hide();
+	//$('#crud-span').hide();
+	$('#clear-button').bind('click',clearText);
 	$('#search-span').show();
 	$('#search-name').bind('keyup',searchTodoByName);
+	$('input[type=search]').bind('search', clearText)
 	getTodos();
 	init_add_modal();
 	init_edit_modal();
+	init_delete_modal();
 }
 
 
 
-
+function clearText()
+{
+	$('#search-name').val('');
+	$('#tableBody tr').show();
+	clearUI();
+}
 
 
 function searchTodoByName()
 {
-	$("#search-name").keyup(function () {
+	
 		var value = this.value;
 		console.log("Search bar se : "+value);
 
@@ -50,28 +57,49 @@ function searchTodoByName()
 			}
 		})
 
-	});
+}
+
+function showDarkBackground()
+{
+	console.log('show dark');
+	        $('.ui-widget-overlay').addClass('custom-overlay');
 
 }
 
+function removeDarkBackground()
+{
+	 $('.ui-widget-overlay').removeClass('custom-overlay');
+
+}
+
+
+
 function showEditModal()
 {
-	$('#crud-span').dialog('open');
+	$('#edit-span').dialog('open');
 }
 
 
 function showAddModal()
 {
-	$('#crud-span').dialog('open');
+	$('#add-span').dialog('open');
 }
 
+function showdeleteModal()
+{
+	$('#delete-span').dialog('open');
+}
 
 
 function init_add_modal()
 {
-		$("#crud-span").dialog({
+		$("#add-span").dialog({
+
 		autoOpen:false,
 		show:'blind',
+		open: function() {
+        $('.ui-widget-overlay').addClass('custom-overlay');
+    } ,
 		hide:'explode',
 		title : 'Add Task',
 		draggable:false,
@@ -84,6 +112,7 @@ function init_add_modal()
         text: "Cancel",
         click: function() {
             $( this ).dialog( "close" );
+            removeDarkBackground();
             clearUI();
         }
     },{
@@ -97,13 +126,52 @@ function init_add_modal()
 }
 
 
+function init_delete_modal()
+{	
+
+		$("#delete-span").dialog({
+		autoOpen:false,
+		show:'blind',
+			open: function() {
+        $('.ui-widget-overlay').addClass('custom-overlay');
+    } ,
+		hide:'explode',
+		title : 'Delete Task',
+		draggable:false,
+		  dialogClass: "no-close",
+		  modal:true,	
+		    resizable: false,
+		width:550,
+		dynamic:false,
+		buttons: [{
+        text: "Cancel",
+        click: function() {
+            $( this ).dialog( "close" );
+            clearUI();
+        }
+    },{
+    	text:'Delete',
+    	click : function(){
+    		    		
+    		$(this).dialog('close');
+    		removeTodo();
+	    	}
+    }]
+	})
+}
+
+
+
 
 function init_edit_modal()
 {
-	$("#crud-span").dialog({
+	$("#edit-span").dialog({
 		autoOpen:false,
 		show:'blind',
 		hide:'explode',
+			open: function() {
+        $('.ui-widget-overlay').addClass('custom-overlay');
+    } ,
 		title : 'Edit Task',
 		draggable:false,
 		  dialogClass: "no-close",
@@ -165,8 +233,8 @@ function showAddMode()
 {
 	clearUI();
 	//$('#crud-span').show();
-	$('#save-button-icon').show();
-	$('#edit-button-icon').hide();
+	//$('#save-button-icon').show();
+	//$('#edit-button-icon').hide();
 	showAddModal();
 }
 
@@ -178,7 +246,7 @@ function searchMode()
 {
 	setMode("SEARCH");
 	console.log('search icon');
-	$('#crud-span').hide();
+//	$('#crud-span').hide();
 	$('#search-span').show();
 
 	
@@ -186,9 +254,9 @@ function searchMode()
 
 function setEditMode()
 {
-	$('#crud-span').show();
-	$('#edit-button-icon').show();	
-	$('#save-button-icon').hide();	
+	//$('#crud-span').show();
+	//$('#edit-button-icon').show();	
+//	$('#save-button-icon').hide();	
 
 
 }
@@ -203,26 +271,30 @@ function editMode(obj)
 	currentId=id;
 	var taskname = obj["taskname"];
 	var priority = obj["priority"];
-	$('#task-name').val(taskname);
-	$('#priority').val(priority);
+	$('#edit-task-name').val(taskname);
+	$('#edit-priority').val(priority);
 	showEditModal();
 }
 
-function getDataFromUI()
+function getDataFromUI(mode)
 {
 
-	currentTaskName=$('#task-name').val();
-	currentPriority=$('#priority').val();
+	if(mode == 'edit-mode')
+	{
+	currentTaskName=$('#edit-task-name').val().trim();
+	currentPriority=$('#edit-priority').val();
 	console.log("Uthaya gaya : "+currentTaskName);
 	console.log("Uthaya gaya : "+currentId);
 
 	console.log("Uthaya gaya : "+currentPriority);
 
 }
+}
 
 function editTodo(obj) 
 {
 	editMode(obj);	
+
 }
 
 
@@ -233,31 +305,53 @@ function setMode(val)
 
 }
 
-function crudTodo()
+
+
+function highlightRowByName(name)
 {
-	console.log('in crud : '+mode);
-	if(mode == "EDIT")
-	{
+	console.log('NAME : '+name);
+	var $rows = $('#tableBody tr');
 
-	}
-	if(mode == "ADD")
-	{
-		addTodo();
-	}
-	if(mode == "SEARCH")
-	{
-		searchTodo();
-	}
+	$rows.each(function(i, item) {
 
+    $this = $(item);
+    var vname = $(this).closest('tr').find('td:nth-child(2)').text();
+    if ( vname == name ) {
+    	console.log('matched '+vname+' with '+name+'');
+        $('tbody').find('tr:first').addClass('selected');
+   //     $this.addClass('selected');
+    }
 
+});
+/*$("#tableBody").find("tr").each(function(index)
+{
+			if (index !== -1) {
+
+				$row = $(this);
+
+				var vname = $row.find("td:nth-child(2)").text();
+
+				if(vname == name) 
+					{
+						console.log("index is  :"+index);
+				console.log('matched '+vname+' with '+name+'');
+				//$('#tableBody tr').removeClass('selected');
+				var temp = $('#tableBody').find('tr').eq(index);
+				console.log('we got it  : === '+temp);
+				$('#tableBody').addClass('selected');
+				//$('#tableBody > tr').eq(index).children().addClass('selected');
+
+				//alert('Row --  > '+$(this));
+			}
+				}
+	})
+*/
 }
-
-
 function addTodo()
 {
 	console.log('add')
-	var task = $('#task-name').val();
-	var priority = $('#priority').val();
+	var task = $('#add-task-name').val();
+	var priority = $('#add-priority').val();
 	if(priority== "-1")
 	{
 		showError('set Priority');
@@ -266,6 +360,7 @@ function addTodo()
 	if(task.trim().length == 0)
 	{
 		alert('Fill up the empty fields');
+		return;
 	}
 	clearUI();
 
@@ -276,36 +371,51 @@ function addTodo()
 		data: {test : JSON.stringify(json)},
 		url :'/Crud/crud/insert',
 		success:function(){
-
 			getTodos();
+
+	//		highlightRowByName(task);
 		},
 		error: function(){
 			showError("some Error in add"+result);
 		}
 	})
-
-
 }
+
+
+
 
 function deleteTodo(id)
 {
-	console.log("id is : "+id)
+
+	currentId = id;
+	var obj= searchTodoById(todos,id);
+	currentTaskName = obj['taskname'];   
+	var content = " "+id+"  --->  "+currentTaskName+" ";
+	$('#delete-span p').text(content)
+	console.log('C T N : '+currentTaskName);
+	showdeleteModal(id);	
+
+}
+
+
+function removeTodo()
+{
+
+	console.log("id is : "+currentId)
 	$.ajax({
 		type:'GET',
-		data: {"id": JSON.stringify(id)},
+		data: {"id": JSON.stringify(currentId)},
 		url :'/Crud/crud/delete',
 		success:function(){
 
 			getTodos();
 		},
 		error: function(){
-			showError("some Error in add"+result);
+			showError("some Error in add");
 		}
 	})
-
-
-
 }
+
 
 function getTodos()
 {
@@ -327,7 +437,8 @@ function getTodos()
 }
 
 
-function createRow(obj) {
+function createRow(obj) 
+{
 
 	const trow = document.createElement("tr");
 
@@ -342,7 +453,7 @@ function createRow(obj) {
 	const td3 = document.createElement("td");
 	const editButton = document.createElement("i");
 	editButton.className = "fas fa-edit";
-	editButton.id="edit-button";	
+	//editButton.id="edit-button";	
 	editButton.addEventListener("click",function(){
 		editTodo(obj);
 	});
@@ -351,6 +462,8 @@ function createRow(obj) {
 
 	const deleteButton = document.createElement("i");
 	deleteButton.className = "fas fa-trash-alt";
+	//	deleteButton.id = "delete-button";
+
 	deleteButton.addEventListener("click",function () {
 		deleteTodo(obj["id"]);
 	});
@@ -378,7 +491,7 @@ function clearTable(){
 
 function updateTodo()
 {
-	getDataFromUI();
+	getDataFromUI('edit-mode');
 	console.log("_______++++_________")
 	console.log("Uthaya gaya : "+currentTaskName);
 	console.log("Uthaya gaya : "+currentId);
@@ -392,24 +505,21 @@ function updateTodo()
 		data: {test : JSON.stringify(json)},
 		url :'/Crud/crud/update',
 		success:function(){
-
 			getTodos();
+	//		highlightRowByName(currentTaskName);
 		},
 		error: function(){
 			showError("some Error in add"+result);
 		}
 	})
-
-
-
 }
-
-
 
 function clearUI()
 {
-	$('#task-name').val("");
-	$('#priority').val("-1");
+	$('#add-task-name').val("");
+	$('#add-priority').val("-1");  
+	$('#edit-task-name').val("");
+	$('#edit-priority').val("-1");
 	$('#tableBody tr').removeClass('selected')
 	searchMode();
 }
@@ -424,11 +534,10 @@ function populateTable()
 		tbody.append(createRow(obj));
 
 	});
-	test();
-
 }
 
 function showError(message)
 {
 	alert(message);
+
 }

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>table design</title>
+        <script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
+
     <style>
 body {
     width: 1024px;
@@ -52,7 +54,25 @@ body {
 .main-table-action-column {
     width: 150px;
 }
+.selected
+{
+    background-color: red;
+}
     </style>
+    }
+}
+
+<script type="text/javascript">
+
+$(document).ready(function()
+{
+    console.log('ready');
+    $('tbody').find('tr:nth-child(3)').addClass('selected');
+})
+
+</script>
+
+
 </head>
 
 <body>

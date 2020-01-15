@@ -26,11 +26,11 @@
 
 		<span id='search-span' > 
 			<label>Search</label> &nbsp;&nbsp;&nbsp;
-			<input type="text" id='search-name' placeholder="Enter  the task to Search"  />
+			<input type="search" id='search-name' placeholder="Enter  the task to Search" />
 			&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;      
+			&nbsp;&nbsp;     
+						
 			<i id='add-button' class="far fa-plus-square"></i>
-			
 			<br/>
 			<br/>
 			<br/>
@@ -41,16 +41,16 @@
 
 
 
-		<span id="crud-span" >
-			<label>Task </label> &nbsp;&nbsp;&nbsp;     <input type="text"  id='task-name' placeholder="Enter  the task"  />
+		<span id="edit-span" >
+			<label>Task </label> &nbsp;&nbsp;&nbsp;     
+			<input type="text"  id='edit-task-name' placeholder="Enter  the task"  />
 			&nbsp;&nbsp;      
-			<i  id ='save-button-icon' class="far fa-save"></i>
 			<i  id ='edit-button-icon' class="far fa-save"></i>
 			
 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label>Priority</label>&nbsp;
-			<select id="priority">
+			<select id="edit-priority">
 				<option value="-1">Select</option>
 				<option value="Low">Low</option>
 				<option value="Medium">Medium</option>
@@ -65,6 +65,32 @@
 			<br/>
 		</span>
 
+
+		<span id='delete-span'><p></p>
+		</span>
+
+<span id="add-span" >
+			<label>Task </label> &nbsp;&nbsp;&nbsp;     <input type="text"  id='add-task-name' placeholder="Enter  the task"  />
+			&nbsp;&nbsp;      
+			<i  id ='save-button-icon' class="far fa-save"></i>
+			
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Priority</label>&nbsp;
+			<select id="add-priority">
+				<option value="-1">Select</option>
+				<option value="Low">Low</option>
+				<option value="Medium">Medium</option>
+				<option value="High">High</option>
+
+			</select> 
+			&nbsp;&nbsp;&nbsp;&nbsp;
+
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+		</span>
 
 
 

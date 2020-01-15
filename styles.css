@@ -5,6 +5,25 @@ body
    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+table th {
+    position: sticky;
+    top: 0;
+    
+ 
+}
+
+.edit-task-name
+{
+
+}
+
+.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.9;
+    z-index: 1040;    
+}
 
 #table-div 
 {
@@ -28,10 +47,14 @@ body
     cursor: pointer;
 }
 
+.main-table
+{
+
+}
 .main-table th
 {
 background-color: #222831;
-color: white;   
+color: white;  
 }
 
 .main-table tbody
@@ -39,6 +62,10 @@ color: white;
 	height:100px;
 }
 
+#delete-span p
+{
+    color: red;
+}
 
 
 .main-table-data-column
@@ -108,7 +135,8 @@ i:hover
     align-items: center;
 }
 
-
+/*
 .no-close .ui-dialog-titlebar-close {
   display: none;
 }
+*/
